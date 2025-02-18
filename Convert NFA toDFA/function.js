@@ -10,26 +10,59 @@ var finalStates = [];
 var listOfTransition = [];
 
 function Init() {
-    numberOfStates = 7;
-    validSymbols = ['a', 'b', 'c'];
-    initialStates = [0, 1];
-    finalStates = [3, 4, 6];
-    listOfTransition = [
-        { leftState: 0, symbol: 'a', rightState: 1 },
-        { leftState: 0, symbol: 'b', rightState: 3 },
-        { leftState: 0, symbol: 'c', rightState: 3 },
-        { leftState: 1, symbol: 'c', rightState: 3 },
-        { leftState: 1, symbol: 'b', rightState: 2 },
-        { leftState: 1, symbol: 'b', rightState: 5 },
-        { leftState: 2, symbol: 'b', rightState: 2 },
-        { leftState: 2, symbol: 'c', rightState: 3 },
-        { leftState: 2, symbol: 'b', rightState: 5 },
-        { leftState: 3, symbol: 'c', rightState: 4 },
-        { leftState: 4, symbol: 'c', rightState: 4 },
-        { leftState: 4, symbol: 'c', rightState: 6 },
-        { leftState: 5, symbol: 'c', rightState: 4 },
-        { leftState: 0, symbol: 'c', rightState: 4 }
-    ];
+
+    //-----------------------------------------------------------------
+    var x = getQueryParam("numberOfState");
+    var y = getQueryParam("initialStates");
+    var z = getQueryParam("finalStates");
+    var n = getQueryParam("validSymbols");
+    var leftStateList = getQueryParam("leftStateList");
+    var symbolList = getQueryParam("symbolList");
+    var rightStateList = getQueryParam("rightStateList");
+    //------------------------------------------------------------------
+    //numberOfStates = 7;
+    numberOfStates = getQueryParam("numberOfState");
+    //validSymbols = ['a', 'b', 'c'];
+    validSymbols = [];
+    for(let i = 0 ; i < n.length ; i += 2) {
+        validSymbols.push(n[i]);
+    }
+    
+    //initialStates = [0, 1];
+    initialStates = [];
+    for(let i = 0 ; i < y.length ; i += 2) {
+        initialStates.push(parseInt(y[i]));
+    }
+    //finalStates = [3, 4, 6];
+    finalStates = [];
+    for(let i = 0 ; i < z.length ; i += 2) {
+        finalStates.push(parseInt(z[i]));
+    }
+    console.log(finalStates);
+
+    // listOfTransition = [
+    //     { leftState: 0, symbol: 'a', rightState: 1 },
+    //     { leftState: 0, symbol: 'b', rightState: 3 },
+    //     { leftState: 0, symbol: 'c', rightState: 3 },
+    //     { leftState: 1, symbol: 'c', rightState: 3 },
+    //     { leftState: 1, symbol: 'b', rightState: 2 },
+    //     { leftState: 1, symbol: 'b', rightState: 5 },
+    //     { leftState: 2, symbol: 'b', rightState: 2 },
+    //     { leftState: 2, symbol: 'c', rightState: 3 },
+    //     { leftState: 2, symbol: 'b', rightState: 5 },
+    //     { leftState: 3, symbol: 'c', rightState: 4 },
+    //     { leftState: 4, symbol: 'c', rightState: 4 },
+    //     { leftState: 4, symbol: 'c', rightState: 6 },
+    //     { leftState: 5, symbol: 'c', rightState: 4 },
+    //     { leftState: 0, symbol: 'c', rightState: 4 }
+    // ];
+
+    listOfTransition = [];
+    for(let i = 0 ; i < leftStateList.length ; i += 2) {
+        listOfTransition.push({ leftState: parseInt(leftStateList[i]) , symbol: symbolList[i] , rightState: parseInt(rightStateList[i]) });
+    }
+
+    console.log(listOfTransition);
 }
 
 // get index of symbol
@@ -43,10 +76,10 @@ function getIndexOfSymbol(symbol) {
 }
 
 // get list of rights 
-function getListOfRights(leftState , symbol) {
+function getListOfRights(leftState, symbol) {
     var ans = [];
-    for(let i = 0 ; i < listOfTransition.length ; i++) {
-        if(listOfTransition[i].leftState == leftState && listOfTransition[i].symbol == symbol) {
+    for (let i = 0; i < listOfTransition.length; i++) {
+        if (listOfTransition[i].leftState == leftState && listOfTransition[i].symbol == symbol) {
             ans.push(listOfTransition[i].rightState);
         }
     }
@@ -55,19 +88,19 @@ function getListOfRights(leftState , symbol) {
 }
 
 // check if two list are equals
-function sameList(list1 , list2) {
+function sameList(list1, list2) {
 
-    if(list1.length != list2.length) {
+    if (list1.length != list2.length) {
         return false;
     }
 
-    for(let i = 0 ; i < list1.length ; i++) {
+    for (let i = 0; i < list1.length; i++) {
         var found = false;
-        for(let j = 0 ; j < list2.length ; j++) {
+        for (let j = 0; j < list2.length; j++) {
             found |= (list2[j] == list1[i]);
         }
 
-        if(found == false) {
+        if (found == false) {
             return false;
         }
     }
@@ -93,9 +126,9 @@ function addNewRow(newList) {
 }
 
 // check if the given array contain the given value or not
-function checkContain(list , value) {
-    for(let i = 0 ; i < list.length ; i++) {
-        if(list[i] == value) {
+function checkContain(list, value) {
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] == value) {
             return true;
         }
     }
@@ -106,8 +139,8 @@ function checkContain(list , value) {
 // check if the given state are new state or not
 function isNewState(list) {
 
-    for(let i = 0 ; i < pileOfStates.length ; i++) {
-        if(sameList(pileOfStates[i] , list) == true) {
+    for (let i = 0; i < pileOfStates.length; i++) {
+        if (sameList(pileOfStates[i], list) == true) {
             return false;
         }
     }
@@ -140,12 +173,12 @@ function CONVERT_NFA_INTO_DFA() {
     // start algorithm
     var currentCell = 0;
     var lengthOfPileOfStates = 1;
-    while(currentCell < lengthOfPileOfStates) {
-        for(let i = 0 ; i < pileOfStates[currentCell].length ; i++) {
-            for(let j = 0 ; j < validSymbols.length ; j++) {
-                var listOfRights = getListOfRights(pileOfStates[currentCell][i] , validSymbols[j]);
-                for(let k = 0 ; k < listOfRights.length ; k++) {
-                    if(checkContain(matriceOfAlgorithm[currentCell][j] , listOfRights[k]) == false) {
+    while (currentCell < lengthOfPileOfStates) {
+        for (let i = 0; i < pileOfStates[currentCell].length; i++) {
+            for (let j = 0; j < validSymbols.length; j++) {
+                var listOfRights = getListOfRights(pileOfStates[currentCell][i], validSymbols[j]);
+                for (let k = 0; k < listOfRights.length; k++) {
+                    if (checkContain(matriceOfAlgorithm[currentCell][j], listOfRights[k]) == false) {
                         matriceOfAlgorithm[currentCell][j].push(listOfRights[k]);
                     }
                 }
@@ -153,8 +186,8 @@ function CONVERT_NFA_INTO_DFA() {
         }
 
         // add new states and new rows
-        for(let i = 0 ; i < validSymbols.length ; i++) {
-            if(isNewState(matriceOfAlgorithm[currentCell][i]) && matriceOfAlgorithm[currentCell][i].length > 0) {
+        for (let i = 0; i < validSymbols.length; i++) {
+            if (isNewState(matriceOfAlgorithm[currentCell][i]) && matriceOfAlgorithm[currentCell][i].length > 0) {
                 addNewRow(matriceOfAlgorithm[currentCell][i]);
             }
         }
@@ -182,8 +215,8 @@ function drawTableOfAlgorithmSteps() {
     for (let i = 0; i < pileOfStates.length; i++) {
         rowInMatriceOfAlgorithmSteps = ``;
         for (let j = 0; j < validSymbols.length; j++) {
-            rowInMatriceOfAlgorithmSteps += 
-            `<div class="cell-row-of-matrice-of-algorithm-steps">
+            rowInMatriceOfAlgorithmSteps +=
+                `<div class="cell-row-of-matrice-of-algorithm-steps">
                ${matriceOfAlgorithm[i][j]}
             </div>`
         }
@@ -200,12 +233,3 @@ function getQueryParam(param) {
     let urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
-
-var x = getQueryParam("numberOfState");
-var y = getQueryParam("initialStates");
-var z = getQueryParam("finalStates");
-var n = getQueryParam("validSymbols");
-var m = getQueryParam("transitionList");
-for(let i = 0 ; i < m.length ; i++) {
-  //  console.log(m[i].leftState + ' ' + m[i].symbol + ' ' + m[i].rightState);
-} 

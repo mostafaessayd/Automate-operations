@@ -37,20 +37,24 @@ function addNewValidSymbol() {
     document.getElementById('display-valid-symbols').innerHTML = newInner;
 }
 
-var transitionList = [];
+var leftStateList = [];
+var symbolList = [];
+var rightStateList = [];
 // add new transition
 function addNewTransition() {
     var leftState = parseInt(document.getElementById('left-state').value);
     var rightState = parseInt(document.getElementById('right-state').value);
     var symbol = document.getElementById('symbol-in-transition').value;
 
-    transitionList.push({ leftState: leftState, symbol: symbol, rightState: rightState });
+    leftStateList.push(leftState);
+    symbolList.push(symbol);
+    rightStateList.push(rightState);
 
     var newInner = ``;
-    for (let i = 0; i < transitionList.length; i++) {
-        var s = transitionList[i].leftState + "";
-        s += transitionList[i].symbol;
-        s += transitionList[i].rightState;
+    for (let i = 0; i < leftStateList.length; i++) {
+        var s = leftStateList[i];
+        s += symbolList[i];
+        s += rightStateList[i];
         newInner += `<div class = "container-of-number">${s}</div>`;
     }
     document.getElementById('display-transitions').innerHTML = newInner;
@@ -59,16 +63,13 @@ function addNewTransition() {
 // submit inputs
 function submit() {
     var numberOfState = document.getElementById('number-of-states').value;
-    console.log('state number : ' + numberOfState);
-    console.log('initial states : ' + initialStates);
-    console.log('final states : ' + finalStates);
-    console.log('valid symbols : ' + validSymbols);
-    console.log('transitions : ' + transitionList);
     document.location = "try.html";
     window.location.href = 'try.html?' 
     + 'numberOfState=' + encodeURIComponent(numberOfState) 
     + '&initialStates=' + encodeURIComponent(initialStates)
     + '&finalStates=' + encodeURIComponent(finalStates)
     + '&validSymbols=' + encodeURIComponent(validSymbols)
-    + '&transitionList=' + encodeURIComponent(transitionList) ;
+    + '&leftStateList=' + encodeURIComponent(leftStateList)
+    + '&symbolList=' + encodeURIComponent(symbolList)
+    + '&rightStateList=' + encodeURIComponent(rightStateList);
 }
