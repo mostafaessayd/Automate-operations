@@ -195,3 +195,17 @@ function drawTableOfAlgorithmSteps() {
 
     document.getElementById('algorithm-steps').innerHTML = table;
 }
+
+function getQueryParam(param) {
+    let urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+var x = getQueryParam("numberOfState");
+var y = getQueryParam("initialStates");
+var z = getQueryParam("finalStates");
+var n = getQueryParam("validSymbols");
+var m = getQueryParam("transitionList");
+for(let i = 0 ; i < m.length ; i++) {
+  //  console.log(m[i].leftState + ' ' + m[i].symbol + ' ' + m[i].rightState);
+} 

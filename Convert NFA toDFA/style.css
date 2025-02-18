@@ -24,11 +24,13 @@ body {
     width: 300px;
 }
 
-.number-of-states-part h2 , .initial-states-part h2 , .final-states-part h2 {
+.number-of-states-part h2 , .initial-states-part h2 , .final-states-part h2 , 
+.valid-symbols-part h2 , .transitions-part h2 {
     margin-bottom: 15px;
 }
 
-.number-of-states-part input , .initial-states-part input , .final-states-part input {
+.number-of-states-part input , .initial-states-part input , .final-states-part input , 
+.valid-symbols-part input {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
@@ -37,7 +39,8 @@ body {
     text-align: center;
 }
 
-.number-of-states-part button , .initial-states-part button , .final-states-part button {
+.number-of-states-part button , .initial-states-part button , .final-states-part button , 
+.valid-symbols-part button , .transitions-part button {
     background-color: #007bff;
     color: white;
     border: none;
@@ -103,6 +106,48 @@ body {
 }
 
 #display-final-states {
+    width: 90%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.valid-symbols-part {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    direction: rtl;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    border: 1px solid black; 
+}
+
+#display-valid-symbols {
+    width: 90%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.transitions-part {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    direction: rtl;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    border: 1px solid black; 
+}
+
+.container-of-transition-input {
     width: 90%;
     height: max-content;
     display: flex;

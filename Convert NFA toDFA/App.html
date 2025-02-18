@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <title>Convert NFA to DFA</title>
 </head>
+
 <body>
     <div class="number-of-states-part">
         <div class="card">
             <h2>Number of states</h2>
-            <input type="number" id="number-of-states"  min="1">
+            <input type="number" id="number-of-states" min="1">
             <p id="error-message"></p>
             <button onclick="">Confirm</button>
         </div>
@@ -32,7 +33,29 @@
             <div id="display-final-states"></div>
         </div>
     </div>
+    <div class="valid-symbols-part">
+        <div class="card">
+            <h2>valid symbols</h2>
+            <input type="text" id="valid-symbols">
+            <button onclick="addNewValidSymbol()">New</button>
+            <div id="display-valid-symbols"></div>
+        </div>
+    </div>
+    <div class="transitions-part">
+        <div class="card">
+            <h2>transitions</h2>
+            <div class="container-of-transition-input">
+                <input type="number" id="left-state">
+                <input type="text" id="symbol-in-transition">
+                <input type="number" id="right-state">
+            </div>
+            <button onclick="addNewTransition()">New</button>
+            <div id="display-transitions"></div>
+        </div>
+    </div>
+    <div class="transitions-part">
+       <button onclick="submit()">submit</button>
+    </div>
 </body>
 <script src="controller.js"></script>
-
 </html>
