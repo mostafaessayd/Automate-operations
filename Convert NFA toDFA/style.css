@@ -24,11 +24,11 @@ body {
     width: 300px;
 }
 
-.number-of-states-part h2 , .initial-states-part h2 {
+.number-of-states-part h2 , .initial-states-part h2 , .final-states-part h2 {
     margin-bottom: 15px;
 }
 
-.number-of-states-part input , .initial-states-part input {
+.number-of-states-part input , .initial-states-part input , .final-states-part input {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
@@ -37,7 +37,7 @@ body {
     text-align: center;
 }
 
-.number-of-states-part button , .initial-states-part button {
+.number-of-states-part button , .initial-states-part button , .final-states-part button {
     background-color: #007bff;
     color: white;
     border: none;
@@ -66,9 +66,46 @@ body {
 
 #display-initial-states {
     width: 90%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center; 
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-of-add-new-state {
+    width: 95%;
+    height: 40px;
+    border: 1px solid black;
+    background-color: firebrick;
+}
+
+.container-of-number {
+    height: 50px;
+    width: 50px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.final-states-part {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    direction: rtl;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    border: 1px solid black;
+}
+
+#display-final-states {
+    width: 90%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
