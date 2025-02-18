@@ -20,49 +20,49 @@ function Init() {
     var symbolList = getQueryParam("symbolList");
     var rightStateList = getQueryParam("rightStateList");
     //------------------------------------------------------------------
-    //numberOfStates = 7;
-    numberOfStates = getQueryParam("numberOfState");
-    //validSymbols = ['a', 'b', 'c'];
-    validSymbols = [];
-    for(let i = 0 ; i < n.length ; i += 2) {
-        validSymbols.push(n[i]);
-    }
+    numberOfStates = 7;
+    //numberOfStates = getQueryParam("numberOfState");
+    validSymbols = ['a', 'b', 'c'];
+    // validSymbols = [];
+    // for(let i = 0 ; i < n.length ; i += 2) {
+    //     validSymbols.push(n[i]);
+    // }
     
-    //initialStates = [0, 1];
-    initialStates = [];
-    for(let i = 0 ; i < y.length ; i += 2) {
-        initialStates.push(parseInt(y[i]));
-    }
-    //finalStates = [3, 4, 6];
-    finalStates = [];
-    for(let i = 0 ; i < z.length ; i += 2) {
-        finalStates.push(parseInt(z[i]));
-    }
-    console.log(finalStates);
+    initialStates = [0, 1];
+    // initialStates = [];
+    // for(let i = 0 ; i < y.length ; i += 2) {
+    //     initialStates.push(parseInt(y[i]));
+    // }
+    finalStates = [3, 4, 6];
+    // finalStates = [];
+    // for(let i = 0 ; i < z.length ; i += 2) {
+    //     finalStates.push(parseInt(z[i]));
+    // }
+    // console.log(finalStates);
 
-    // listOfTransition = [
-    //     { leftState: 0, symbol: 'a', rightState: 1 },
-    //     { leftState: 0, symbol: 'b', rightState: 3 },
-    //     { leftState: 0, symbol: 'c', rightState: 3 },
-    //     { leftState: 1, symbol: 'c', rightState: 3 },
-    //     { leftState: 1, symbol: 'b', rightState: 2 },
-    //     { leftState: 1, symbol: 'b', rightState: 5 },
-    //     { leftState: 2, symbol: 'b', rightState: 2 },
-    //     { leftState: 2, symbol: 'c', rightState: 3 },
-    //     { leftState: 2, symbol: 'b', rightState: 5 },
-    //     { leftState: 3, symbol: 'c', rightState: 4 },
-    //     { leftState: 4, symbol: 'c', rightState: 4 },
-    //     { leftState: 4, symbol: 'c', rightState: 6 },
-    //     { leftState: 5, symbol: 'c', rightState: 4 },
-    //     { leftState: 0, symbol: 'c', rightState: 4 }
-    // ];
+    listOfTransition = [
+        { leftState: 0, symbol: 'a', rightState: 1 },
+        { leftState: 0, symbol: 'b', rightState: 3 },
+        { leftState: 0, symbol: 'c', rightState: 3 },
+        { leftState: 1, symbol: 'c', rightState: 3 },
+        { leftState: 1, symbol: 'b', rightState: 2 },
+        { leftState: 1, symbol: 'b', rightState: 5 },
+        { leftState: 2, symbol: 'b', rightState: 2 },
+        { leftState: 2, symbol: 'c', rightState: 3 },
+        { leftState: 2, symbol: 'b', rightState: 5 },
+        { leftState: 3, symbol: 'c', rightState: 4 },
+        { leftState: 4, symbol: 'c', rightState: 4 },
+        { leftState: 4, symbol: 'c', rightState: 6 },
+        { leftState: 5, symbol: 'c', rightState: 4 },
+        { leftState: 0, symbol: 'c', rightState: 4 }
+    ];
 
-    listOfTransition = [];
-    for(let i = 0 ; i < leftStateList.length ; i += 2) {
-        listOfTransition.push({ leftState: parseInt(leftStateList[i]) , symbol: symbolList[i] , rightState: parseInt(rightStateList[i]) });
-    }
+    // listOfTransition = [];
+    // for(let i = 0 ; i < leftStateList.length ; i += 2) {
+    //     listOfTransition.push({ leftState: parseInt(leftStateList[i]) , symbol: symbolList[i] , rightState: parseInt(rightStateList[i]) });
+    // }
 
-    console.log(listOfTransition);
+    // console.log(listOfTransition);
 }
 
 // get index of symbol
@@ -201,6 +201,8 @@ function CONVERT_NFA_INTO_DFA() {
 
 CONVERT_NFA_INTO_DFA();
 drawTableOfAlgorithmSteps();
+drawTableOfAnswer();
+getDescriptionOfAnswer();
 
 function drawTableOfAlgorithmSteps() {
     var table = ``;
@@ -229,7 +231,84 @@ function drawTableOfAlgorithmSteps() {
     document.getElementById('algorithm-steps').innerHTML = table;
 }
 
+function drawTableOfAnswer() {
+    var table = ``;
+    var rowInMatriceOfAlgorithmSteps = ``;
+    for (let j = 0; j < validSymbols.length; j++) {
+        rowInMatriceOfAlgorithmSteps += `<div class="cell-row-of-matrice-of-algorithm-steps">${validSymbols[j]}</div>`
+    }
+    table +=
+        `<div class="one-row">
+      <div class="empty-cell"></div>` + rowInMatriceOfAlgorithmSteps +
+        `</div>`;
+    for (let i = 0; i < pileOfStates.length; i++) {
+        rowInMatriceOfAlgorithmSteps = ``;
+        for (let j = 0; j < validSymbols.length; j++) {
+            rowInMatriceOfAlgorithmSteps +=
+                `<div class="cell-row-of-matrice-of-algorithm-steps">
+               ${getIndexeOfList(matriceOfAlgorithm[i][j])}
+            </div>`
+        }
+        table +=
+            `<div class="one-row">
+          <div class="cell-of-pile-of-states">${getIndexeOfList(pileOfStates[i])}</div>` + rowInMatriceOfAlgorithmSteps +
+            `</div>`;
+    }
+
+    document.getElementById('answer').innerHTML = table;
+}
+
 function getQueryParam(param) {
     let urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
+}
+
+function getIndexeOfList(list) {
+    for(let i = 0 ; i < pileOfStates.length ; i++) {
+        if(sameList(list , pileOfStates[i])) {
+            return i;
+        }
+    }
+
+    return '';
+}
+
+function getDescriptionOfAnswer() {
+    var NewfinalStates = ``;
+    let i = 0;
+    for( ; i < pileOfStates.length ; i++) {
+        var found = false;
+        for(let j = 0 ; j < pileOfStates[i].length ; j++) {
+          for(let k = 0 ; k < finalStates.length ; k++) {
+            found |= (checkContain(pileOfStates[i] , finalStates[k]));
+          }
+        }
+
+        if(found) {
+            NewfinalStates += `${getIndexeOfList(pileOfStates[i])}`;
+            i++;
+            break;
+        }
+    }
+    for( ; i < pileOfStates.length ; i++) {
+        var found = false;
+        for(let j = 0 ; j < pileOfStates[i].length ; j++) {
+          for(let k = 0 ; k < finalStates.length ; k++) {
+            found |= (checkContain(pileOfStates[i] , finalStates[k]));
+          }
+        }
+
+        if(found) {
+            NewfinalStates += `,${getIndexeOfList(pileOfStates[i])}`;
+            i++;
+            break;
+        }
+    }
+
+    var description = `
+    <h3>- Number of sates : ${pileOfStates.length}</h3>
+    <h3>- initial state : 0</h3>
+    <h3>- final sates : ` + NewfinalStates + `</h3>
+    `;
+    document.getElementById('description').innerHTML = description;
 }
