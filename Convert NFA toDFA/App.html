@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Convert NFA to DFA</title>
+</head>
+<body>
+    <div class="number-of-states-part">
+        <div class="card">
+            <h2>Number of states</h2>
+            <input type="number" id="number-of-states"  min="1">
+            <p id="error-message"></p>
+            <button onclick="">Confirm</button>
+        </div>
+    </div>
+    <div class="initial-states-part">
+        <div class="card">
+            <h2>Initial states</h2>
+            <input type="number" min="0" id="Initial-states">
+            <button onclick="">New</button>
+            <div id="display-initial-states"></div>
+        </div>
+    </div>
+</body>
+<script src="controller.js"></script>
+
+</html>

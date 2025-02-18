@@ -1,0 +1,50 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container-of-options-page {
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('Screenshot\ 2025-01-30\ 112451.png');
+    background-size: cover;
+}
+
+.card-of-option {
+    height: 60%;
+    width: 20%;
+    border: 2px solid goldenrod;
+    margin: 5%;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.part-of-description {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.part-of-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15%;
+    width: 100%;
+}
+
+.part-of-button button {
+    background-color: white;
+    height: 70%;
+    width: 80%;
+    border: 2px solid goldenrod;
+    border-radius: 30%;
+}

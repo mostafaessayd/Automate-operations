@@ -1,0 +1,74 @@
+body {
+    height: 200vh;
+}
+
+.number-of-states-part {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    direction: rtl;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    border: 1px solid black;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.number-of-states-part h2 , .initial-states-part h2 {
+    margin-bottom: 15px;
+}
+
+.number-of-states-part input , .initial-states-part input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.number-of-states-part button , .initial-states-part button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.number-of-states-part button:hover {
+    background-color: #0056b3;
+}
+
+.initial-states-part {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    direction: rtl;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    border: 1px solid black;
+}
+
+#display-initial-states {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center; 
+}
