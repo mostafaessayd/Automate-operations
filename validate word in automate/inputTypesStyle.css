@@ -22,3 +22,8 @@ body {
     text-align: center;
     width: 300px;
 }
+
+#automate-data {
+    direction: ltr;
+    text-align: right;
+}

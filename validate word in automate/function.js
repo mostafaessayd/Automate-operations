@@ -19,37 +19,37 @@ function Init() {
     var rightStateList = getQueryParam("rightStateList");
     //------------------------------------------------------------------
     numberOfStates = 4;
-    //numberOfStates = getQueryParam("numberOfState");
-    validSymbols = ['a', 'b', 'c'];
-    // validSymbols = [];
-    // for (let i = 0; i < n.length; i += 2) {
-    //     validSymbols.push(n[i]);
-    // }
+    numberOfStates = getQueryParam("numberOfState");
+    // validSymbols = ['a', 'b', 'c'];
+    validSymbols = [];
+    for (let i = 0; i < n.length; i += 2) {
+        validSymbols.push(n[i]);
+    }
 
-     initialState = 0;
-    // initialState = getQueryParam("initialStates");
-     finalStates = [3, 2];
-    // finalStates = [];
-    // for (let i = 0; i < z.length; i += 2) {
-    //     finalStates.push(parseInt(z[i]));
-    // }
+     //initialState = 0;
+     initialState = getQueryParam("initialStates");
+     //finalStates = [3, 2];
+    finalStates = [];
+    for (let i = 0; i < z.length; i += 2) {
+        finalStates.push(parseInt(z[i]));
+    }
     // console.log(finalStates);
 
-    listOfTransition = [
-        { leftState: 0, symbol: 'a', rightState: 1 },
-        { leftState: 1, symbol: 'a', rightState: 1 },
-        { leftState: 1, symbol: 'b', rightState: 3 },
-        { leftState: 3, symbol: 'c', rightState: 3 },
-        { leftState: 2, symbol: 'a', rightState: 2 },
-        { leftState: 1, symbol: 'c', rightState: 2 },
-    ];
+    // listOfTransition = [
+    //     { leftState: 0, symbol: 'a', rightState: 1 },
+    //     { leftState: 1, symbol: 'a', rightState: 1 },
+    //     { leftState: 1, symbol: 'b', rightState: 3 },
+    //     { leftState: 3, symbol: 'c', rightState: 3 },
+    //     { leftState: 2, symbol: 'a', rightState: 2 },
+    //     { leftState: 1, symbol: 'c', rightState: 2 },
+    // ];
 
-    // listOfTransition = [];
-    // for (let i = 0; i < leftStateList.length; i += 2) {
-    //     listOfTransition.push({ leftState: parseInt(leftStateList[i]), symbol: symbolList[i], rightState: parseInt(rightStateList[i]) });
-    // }
+    listOfTransition = [];
+    for (let i = 0; i < leftStateList.length; i += 2) {
+        listOfTransition.push({ leftState: parseInt(leftStateList[i]), symbol: symbolList[i], rightState: parseInt(rightStateList[i]) });
+    }
 
-    // console.log(listOfTransition);
+     console.log(listOfTransition);
 }
 
 function draw() {
