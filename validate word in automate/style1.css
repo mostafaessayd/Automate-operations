@@ -1,0 +1,68 @@
+body {
+    height: 200vh;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+#show-automate {
+    width: 100%;
+    height: max-content;
+}
+
+.one-row {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell-of-pile-of-states , .cell-row-of-matrice-of-algorithm-steps {
+    height: 100%;
+    width: 150px;
+    background-color: aqua;
+    border: 0.5px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+}
+
+.empty-cell {
+    height: 100%;
+    width: 150px;
+    background-color: white;
+    border: 0.5px solid white;
+}
+
+#answer {
+    width: 100%;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+}
+
+#description {
+    height: max-content;
+    width: 100%;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    width: 100%;
+    margin: 20px;
+}
+
+.container-of-text-area {
+    height: max-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
