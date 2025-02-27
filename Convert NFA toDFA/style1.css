@@ -56,3 +56,8 @@ body {
     width: 100%;
     margin: 20px;
 }
+
+#show-automate {
+    width: 100%;
+    height: max-content;
+}

@@ -13,7 +13,7 @@ function Init() {
 
     //-----------------------------------------------------------------
     var x = getQueryParam("numberOfState");
-    var y = getQueryParam("initialStates");
+    var y = getQueryParam("initialState");
     var z = getQueryParam("finalStates");
     var n = getQueryParam("validSymbols");
     var leftStateList = getQueryParam("leftStateList");
@@ -312,3 +312,43 @@ function getDescriptionOfAnswer() {
     `;
     document.getElementById('description').innerHTML = description;
 }
+
+function draw() {
+    var table = ``;
+    var row = ``;
+    for (let j = 0; j < validSymbols.length; j++) {
+        row += `<div class="cell-row-of-matrice-of-algorithm-steps">${validSymbols[j]}</div>`
+    }
+    table +=
+        `<div class="one-row">
+      <div class="empty-cell"></div>` + row +
+        `</div>`;
+
+    for (let i = 0; i < numberOfStates; i++) {
+        row = ``;
+        for (let j = 0; j < validSymbols.length; j++) {
+            row +=
+                `<div class="cell-row-of-matrice-of-algorithm-steps">
+                   ${getListOfRights(i, validSymbols[j])}
+                </div>`
+        }
+        table +=
+            `<div class="one-row">
+              <div class="cell-of-pile-of-states">${i}</div>` + row +
+            `</div>`;
+    }
+
+    document.getElementById('show-automate').innerHTML = table;
+}
+
+// function to get right of transition L-S-?
+function getRightOf(left, symbol) {
+    for (let i = 0; i < listOfTransition.length; i++) {
+        if (listOfTransition[i].leftState == left && listOfTransition[i].symbol == symbol) {
+            return listOfTransition[i].rightState;
+        }
+    }
+    return '';
+}
+
+draw();

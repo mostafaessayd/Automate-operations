@@ -27,7 +27,7 @@ function Init() {
     }
 
      //initialState = 0;
-     initialState = getQueryParam("initialStates");
+     initialState = getQueryParam("initialState");
      //finalStates = [3, 2];
     finalStates = [];
     for (let i = 0; i < z.length; i += 2) {
@@ -87,7 +87,7 @@ function getRightOf(left, symbol) {
             return listOfTransition[i].rightState;
         }
     }
-    return '';
+    return -1;
 }
 
 function getQueryParam(param) {
@@ -96,7 +96,11 @@ function getQueryParam(param) {
 }
 
 function getDescriptionOfAnswer() {
-    var NewfinalStates = ``;
+    var NewfinalStates = `${finalStates[0]}`;
+    for(let i = 1 ; i < finalStates.length ; i++) {
+        NewfinalStates += `,${finalStates[i]}`;
+    }
+
     var description = `
     <h3>- Number of sates : ${numberOfStates}</h3>
     <h3>- initial state : ${initialState}</h3>
@@ -129,11 +133,13 @@ function check() {
         while(j < text.length) {
             var nextState = getRightOf(state , text[j]);
             console.log(state + ' ' + text[j] + ' ' + nextState);
-            if(nextState == '') {
-                break;
+            
+            if(nextState == -1) {
+                break;  
             } else {
                 temp += text[j];
                 if(isFianalState(nextState)) {
+                    console.log('next : ' + nextState);
                     word += temp;
                     temp  = "";
                     nextStart = j + 1;
@@ -143,6 +149,7 @@ function check() {
             j++;
         }
 
+       // console.log('fff : ' + nextStart);
         if(nextStart == -1) {
             accepted = false;
             break;
@@ -156,3 +163,4 @@ function check() {
 
 Init();
 draw();
+getDescriptionOfAnswer();
