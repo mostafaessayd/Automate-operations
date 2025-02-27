@@ -283,13 +283,14 @@ function getDescriptionOfAnswer() {
             found |= (checkContain(pileOfStates[i] , finalStates[k]));
           }
         }
-
+        console.log('list: ' + pileOfStates[i] + ' found : ' + found);
         if(found) {
             NewfinalStates += `${getIndexeOfList(pileOfStates[i])}`;
             i++;
             break;
         }
     }
+
     for( ; i < pileOfStates.length ; i++) {
         var found = false;
         for(let j = 0 ; j < pileOfStates[i].length ; j++) {
@@ -297,11 +298,10 @@ function getDescriptionOfAnswer() {
             found |= (checkContain(pileOfStates[i] , finalStates[k]));
           }
         }
-
+        console.log('list: ' + pileOfStates[i] + ' found : ' + found);
         if(found) {
             NewfinalStates += `,${getIndexeOfList(pileOfStates[i])}`;
             i++;
-            break;
         }
     }
 
@@ -351,4 +351,14 @@ function getRightOf(left, symbol) {
     return '';
 }
 
+function getDescriptionOfAutomate() {
+    var description = `
+    <h3>- Number of sates : ${numberOfStates}</h3>
+    <h3>- initial states : ` + initialStates + `</h3>
+    <h3>- final sates : ` + finalStates + `</h3>
+    `;
+    document.getElementById('description1').innerHTML = description;
+}
+
 draw();
+getDescriptionOfAutomate();
