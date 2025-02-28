@@ -98,8 +98,8 @@ function submit() {
         + '\nfinal states : ' + finalStates
     );
 
-     document.location = "try.html";
-    window.location.href = 'try.html?' 
+     document.location = "selectAnswerType.html";
+    window.location.href = 'selectAnswerType.html?' 
     + 'numberOfState=' + encodeURIComponent(numberOfState) 
     + '&initialState=' + encodeURIComponent(initialState)
     + '&finalStates=' + encodeURIComponent(finalStates)

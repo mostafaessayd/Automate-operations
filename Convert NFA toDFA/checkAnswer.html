@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="checkAnswer.css">
+</head>
+
+<body>
+    <div class="title"><h1>Automate</h1></div>
+    <div id="show-automate">
+    </div>
+    <div class="title">
+        <h1>Description</h1>
+    </div>
+    <div id="description1">
+
+    </div>
+    <div class="title">
+        <h1>Algorithm steps</h1>
+    </div>
+    <div id="algorithm-steps">
+    </div>
+    <div class="title">
+        <h1>user Algorithm steps</h1>
+    </div>
+    <div id="user-algorithm-steps"> 
+    </div>
+    <div class="title">
+        <h1>remote</h1>
+    </div>
+    <div class="uesr-buttons">
+        <div class="row-of-inputs">
+            <input type="text" id="add-new-row-list-in-user-input">
+            <button onclick="addNewRowOfUser()">add new row</button>
+        </div>
+        <div class="row-of-inputs">
+            <input type="text" id="add-new-state-list-in-user-input">
+            <input type="text" id="add-new-state-symbol-in-user-input">
+            <input type="text" id="add-new-state-new-state-in-user-input">
+            <button onclick="addNewStateIntoUserMatriceOfAlgorithm()">add new state</button>
+        </div>
+        <div class="row-of-inputs">
+            <button onclick="check()">sumbit</button>
+        </div>
+    </div>
+</body>
+<script src="checkAnswerController.js"></script>
+
+</html>
