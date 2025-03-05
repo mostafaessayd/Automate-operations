@@ -443,6 +443,9 @@ function addNewRowOfUser() {
     var s = document.getElementById('add-new-row-list-in-user-input').value;
     var newList = getListFromString(s);
     
+    if(newList.length == 0) {
+        return;
+    }
     var list = [];
     for (let i = 0; i < newList.length; i++) {
         list.push(newList[i]);
@@ -484,8 +487,32 @@ function addNewStateIntoUserMatriceOfAlgorithm() {
 // function to check answer
 function check() {
     var okey = true;
+    if(userPileOfStates.length != pileOfStates) {
+        okey = false;
+    }
+    
     for(let i = 0 ; i < validSymbols.length ; i++) {
         okey &= (sameList(userMatriceOfAlgorithm[0][i] , matriceOfAlgorithm[0][i]));
+    }
+    
+    for(let i = 1 ; i < userPileOfStates.length ; i++) {
+        var found = false;
+        for(let j = 0 ; j < i ; j++) {
+            for(let k = 0 ; k < validSymbols.length ; k++) {
+                found |= (sameList(userPileOfStates[i] , matriceOfAlgorithm[j][k]));
+            }
+        }
+        
+        if(found == false) {
+            alert('wrong answer');
+        } else {
+            var idxOfList = getIndexeOfList(userPileOfStates[i]);
+            for(let j = 0 ; j < validSymbols.length ; j++) {
+                found &= (sameList(userMatriceOfAlgorithm[i][j] , matriceOfAlgorithm[idxOfList][j]));
+            }
+        }
+
+        okey &= (found == true);
     }
 
     alert(okey);

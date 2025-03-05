@@ -8,14 +8,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
     direction: rtl;
     margin: 0;
     font-family: Arial, sans-serif;
-    border: 1px solid black;
 }
 
 .card {
+    /* background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px; */
+    border: 1px solid #c0c0c0;
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -41,17 +47,14 @@ body {
 
 .number-of-states-part button , .initial-states-part button , .final-states-part button , 
 .valid-symbols-part button , .transitions-part button {
-    background-color: #007bff;
+    /* background-color: #007bff;
     color: white;
     border: none;
     padding: 10px;
     width: 100%;
     border-radius: 5px;
-    cursor: pointer;
-}
-
-.number-of-states-part button:hover {
-    background-color: #0056b3;
+    cursor: pointer; */
+    border: 1px solid #605757;
 }
 
 .initial-states-part {
@@ -60,11 +63,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f4f4f4;
     direction: rtl;
     margin: 0;
     font-family: Arial, sans-serif;
-    border: 1px solid black;
 }
 
 #display-initial-states {
@@ -83,10 +84,10 @@ body {
 }
 
 .container-of-number {
-    height: 50px;
-    width: 50px;
+    height: max-content;
+    width: max-content;
     background-color: antiquewhite;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,11 +99,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f4f4f4;
     direction: rtl;
     margin: 0;
     font-family: Arial, sans-serif;
-    border: 1px solid black;
 }
 
 #display-final-states {
@@ -119,11 +118,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f4f4f4;
     direction: rtl;
     margin: 0;
     font-family: Arial, sans-serif;
-    border: 1px solid black; 
 }
 
 #display-valid-symbols {
@@ -140,17 +137,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f4f4f4;
     direction: rtl;
     margin: 0;
     font-family: Arial, sans-serif;
-    border: 1px solid black; 
 }
 
 .container-of-transition-input {
-    width: 90%;
+    width: 100%;
     height: max-content;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container-of-transition-input input {
+    width: 30%;
+}
+
+#display-transitions {
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid black;
 }
